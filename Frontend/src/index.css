@@ -1,0 +1,348 @@
+/* -------------------------------------------------------------------------- */
+/* 1. THEME VARIABLES & FONTS                                                 */
+/* -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;700;900&display=swap');
+
+:root {
+  /* Branding Colors */
+  --off-white: #F8F7F2;
+  --brutal-yellow: #FACC15;
+  --brutal-pink: #FF69B4;
+  --brutal-green: #ADFF2F;
+  --brutal-blue: #00FFFF;
+  --black: #000000;
+  --white: #ffffff;
+
+  /* Borders & Shadows */
+  --border-thick: 4px;
+  --border-thin: 2px;
+  --shadow-offset: 8px;
+  --shadow-sm: 4px 4px 0px 0px var(--black);
+  --shadow-lg: 8px 8px 0px 0px var(--black);
+  
+  /* Animation */
+  --pop: all 0.1s ease-in-out;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. RESET & BASE STYLES                                                     */
+/* -------------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+  background-color: var(--off-white);
+  color: var(--black);
+  overflow-x: hidden;
+  line-height: 1.4;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, .brutal-title {
+  font-family: 'Archivo Black', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. RESPONSIVE GRID SYSTEM                                                  */
+/* -------------------------------------------------------------------------- */
+.root-wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.app-container {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile: 1 Column */
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Tablet: Sidebar + Main */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .app-container {
+    grid-template-columns: 240px 1fr;
+  }
+  .sidebar-right { display: none; }
+}
+
+/* Desktop: 3 Columns */
+@media (min-width: 1024px) {
+  .app-container {
+    grid-template-columns: 260px 1fr 320px;
+    gap: 2rem;
+    padding: 2rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. NAVIGATION BAR                                                          */
+/* -------------------------------------------------------------------------- */
+.brutal-nav {
+  background: var(--brutal-yellow);
+  border: var(--border-thick) solid var(--black);
+  box-shadow: var(--shadow-lg);
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 1rem;
+  z-index: 1000;
+}
+
+@media (min-width: 768px) {
+  .brutal-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+}
+
+.brutal-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: var(--border-thick) solid var(--black);
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  outline: none;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.brutal-input:focus {
+  background: var(--brutal-blue);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. MEME CARDS & FEED                                                       */
+/* -------------------------------------------------------------------------- */
+.meme-card {
+  background: var(--white);
+  border: var(--border-thick) solid var(--black);
+  box-shadow: var(--shadow-lg);
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  transition: var(--pop);
+}
+
+.meme-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px 0px var(--black);
+}
+
+.meme-img-box {
+  border: var(--border-thick) solid var(--black);
+  background: var(--black);
+  margin: 1.2rem 0;
+  width: 100%;
+  height: 400px; /* Uniform height */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.meme-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Prevents stretching */
+  transition: transform 0.3s ease;
+}
+
+.meme-card:hover img {
+  transform: scale(1.05);
+}
+
+.meme-caption {
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 6. BUTTONS & UI ELEMENTS                                                   */
+/* -------------------------------------------------------------------------- */
+.brutal-btn {
+  font-family: 'Archivo Black', sans-serif;
+  padding: 0.8rem 1.2rem;
+  border: var(--border-thick) solid var(--black);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: var(--pop);
+  display: inline-block;
+  text-align: center;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.brutal-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px var(--black);
+}
+
+.brutal-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px 0px var(--black);
+}
+
+.bg-yellow { background: var(--brutal-yellow); }
+.bg-pink   { background: var(--brutal-pink); }
+.bg-blue   { background: var(--brutal-blue); }
+.bg-green  { background: var(--brutal-green); }
+.bg-white  { background: var(--white); }
+
+/* -------------------------------------------------------------------------- */
+/* 7. SIDEBARS & WIDGETS                                                      */
+/* -------------------------------------------------------------------------- */
+.sidebar-left, .sidebar-right {
+  display: none; 
+}
+
+@media (min-width: 1024px) {
+  .sidebar-left, .sidebar-right { display: block; }
+}
+
+.brutal-widget {
+  background: var(--white);
+  border: var(--border-thick) solid var(--black);
+  box-shadow: var(--shadow-lg);
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.widget-header {
+  background: var(--black);
+  color: var(--white);
+  padding: 0.5rem;
+  margin: -1rem -1rem 1rem -1rem;
+  text-align: center;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 8. MOBILE OPTIMIZATIONS                                                    */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  h1 { font-size: 1.8rem; }
+  .meme-card { padding: 1rem; }
+  .brutal-btn { width: 100%; margin-bottom: 0.5rem; }
+  .meme-img-box { height: 300px; }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 9. AWESOME & READABLE DARK THEME                                           */
+/* -------------------------------------------------------------------------- */
+body.dark-mode {
+  --off-white: #050505;
+  --white: #121212;
+  --black: #ADFF2F; /* Neon Lime */
+  --brutal-yellow: #8B5CF6; /* Electric Purple */
+  color: #ffffff;
+}
+
+/* Readability Overrides */
+body.dark-mode .brutal-btn {
+  color: #000000 !important;
+  font-weight: 900;
+}
+
+body.dark-mode .brutal-input {
+  background-color: #ffffff; /* Keep inputs bright for readability */
+  color: #000000;
+  border-color: var(--black);
+}
+
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode .brutal-title {
+  color: var(--black);
+  text-shadow: 2px 2px 0px #000000;
+}
+
+body.dark-mode .widget-header {
+  background-color: var(--black);
+  color: #000000;
+}
+
+body.dark-mode .meme-card, 
+body.dark-mode .brutal-nav, 
+body.dark-mode .brutal-btn, 
+body.dark-mode .brutal-widget {
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0px 0px #000000;
+}
+
+body.dark-mode img {
+  filter: brightness(0.9) contrast(1.1);
+}
+
+.brutal-nav {
+  background: var(--brutal-yellow);
+  border: var(--border-thick) solid var(--black);
+  box-shadow: var(--shadow-lg);
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 1rem;
+  z-index: 1000;
+}
+
+.nav-brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.hamburger-btn {
+  display: none;
+  background: var(--black);
+  color: var(--off-white);
+  border: var(--border-thick) solid var(--black);
+  padding: 5px 12px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.nav-actions-container {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 1023px) {
+  .hamburger-btn { display: block; }
+  .nav-actions-container {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 1rem;
+    border-top: var(--border-thick) solid var(--black);
+  }
+  .nav-actions-container.open { display: flex; }
+  .nav-actions { flex-wrap: wrap; justify-content: center; }
+}
+
+@media (min-width: 1024px) {
+  .brutal-nav { flex-direction: row; }
+}
