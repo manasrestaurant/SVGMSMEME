@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const { createMeme, getMemes, upvoteMeme } = require('../Controllers/memeController');
+const { createMeme, getMemes, upvoteMeme } = require('../controllers/memeController');
 const { protect } = require('../middleware/authMiddleware'); // Assuming you have auth
 
 // Configure local storage for Multer
