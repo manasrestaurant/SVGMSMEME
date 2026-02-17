@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'https://svgmsmeme.onrender.com/api',
 });
 
 // Automatically add the Auth token to every private request

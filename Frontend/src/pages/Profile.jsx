@@ -15,13 +15,13 @@ const Profile = () => {
         const token = localStorage.getItem('token');
         console.log("Fetching profile : ", storedUser?._id || "Unknown User");
         // 1. Fetch User Stats (Karma, Rank, etc.)
-        const userRes = await axios.get(`http://localhost:5000/api/users/${storedUser._id}`, {
+        const userRes = await axios.get(`https://svgmsmeme.onrender.com/api/users/${storedUser._id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setProfileData(userRes.data);
 
         // 2. Fetch only memes uploaded by this user
-        const memesRes = await axios.get(`http://localhost:5000/api/users/user-memes/${storedUser._id}`, {
+        const memesRes = await axios.get(`https://svgmsmeme.onrender.com/api/users/user-memes/${storedUser._id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUserMemes(memesRes.data);
@@ -74,7 +74,7 @@ const Profile = () => {
         {userMemes.length == 0 ? userMemes.map(meme => (
           <div key={meme._id} className="meme-card" style={{ padding: '10px' }}>
             <div className="meme-img-box" style={{ height: '200px' }}>
-              <img src={`http://localhost:5000/${meme.image}`} alt="User Meme" />
+              <img src={`https://svgmsmeme.onrender.com/${meme.image}`} alt="User Meme" />
             </div>
             <p style={{ fontWeight: 'bold', textAlign: 'center' }}>{meme.caption}</p>
           </div>

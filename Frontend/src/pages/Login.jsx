@@ -9,7 +9,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/users/login', formData);
+      const res = await axios.post('https://svgmsmeme.onrender.com/api/users/login', formData);
       
       // Check if the response contains the required data
       if (res.data && res.data.token) {

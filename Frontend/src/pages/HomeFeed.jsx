@@ -3,7 +3,7 @@ import { fetchMemes, upvoteMeme } from '../services/api';
 import MemeCard from '../components/MemeCard';
 
 // 1. Define your backend base URL
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = "https://svgmsmeme.onrender.com";
 
 const HomeFeed = ({category}) => {
   const [memes, setMemes] = useState([]);

@@ -36,7 +36,7 @@ const Upload = () => {
       
       // Hit your backend endpoint
       // Ensure you have your Auth token in the headers if using protected route
-      await axios.post('http://localhost:5000/api/memes', formData, {
+      await axios.post('https://svgmsmeme.onrender.com/api/memes', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${localStorage.getItem('token')}`
