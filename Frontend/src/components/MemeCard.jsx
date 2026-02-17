@@ -1,4 +1,10 @@
 const MemeCard = ({ meme, onUpvote }) => {
+  let isImage = true;
+ if(meme.imageUrl) {
+    const lowerUrl = meme.imageUrl.toLowerCase();
+    isImage = lowerUrl.endsWith('.jpg') || lowerUrl.endsWith('.jpeg') || lowerUrl.endsWith('.png') || lowerUrl.endsWith('.gif');
+  }
+  console.log("MemeCard received meme:", meme, "isImage:", isImage);
   return (
     <div className="meme-card">
       <div className="card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -16,11 +22,18 @@ const MemeCard = ({ meme, onUpvote }) => {
 
       {/* ENFORCED IMAGE SIZE CONTAINER */}
       <div className="meme-img-box">
-        <img 
-          src={meme.imageUrl} 
-          alt={meme.caption} 
-          crossOrigin="anonymous" 
-        />
+        {isImage ? (
+          <img 
+            src={meme.imageUrl} 
+            alt={meme.caption} 
+            crossOrigin="anonymous" 
+          />
+        ) : (
+          <video className="meme-img-box">
+            <source src={meme.imageUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
       </div>
 
       <h2 className="meme-caption">
