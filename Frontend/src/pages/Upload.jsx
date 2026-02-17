@@ -59,7 +59,7 @@ const Upload = () => {
         {/* Hidden File Input */}
         <input 
           type="file" 
-          accept="image/*" 
+          accept="image/*,video/*" 
           ref={fileInputRef} 
           style={{ display: 'none' }} 
           onChange={handleImageChange} 
