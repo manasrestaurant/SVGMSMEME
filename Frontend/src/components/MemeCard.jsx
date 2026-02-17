@@ -29,7 +29,7 @@ const MemeCard = ({ meme, onUpvote }) => {
             crossOrigin="anonymous" 
           />
         ) : (
-          <video className="meme-img-box">
+          <video className="meme-img-box" controls>
             <source src={meme.imageUrl} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
